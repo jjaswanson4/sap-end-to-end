@@ -1,0 +1,26 @@
+---
+
+sap_hana_deployment_hana_sid: "PS4"
+sap_hana_hsr_hana_sid: "PS4"
+sap_hana_hsr_hana_primary_hostname: "sapdphdb1"
+sap_hana_hsr_full_primary_hostname: "sapdphdb1.demo.josh.lab.msp.redhat.com"
+sap_hana_hsr_full_secondary_hostname: "sapdphdb2.demo.josh.lab.msp.redhat.com"
+
+sap_hana_ha_pacemaker_hana_sid: "PS4"
+sap_hana_ha_pacemaker_hana_instance_number: "00"
+sap_hana_ha_pacemaker_vip: 10.15.120.53
+sap_hana_ha_pacemaker_hacluster_password: "R3dh4t123!"
+sap_hana_ha_pacemaker_node1_fqdn: sapdphdb1.demo.josh.lab.msp.redhat.com
+sap_hana_ha_pacemaker_node2_fqdn: sapdphdb2.demo.josh.lab.msp.redhat.com
+sap_hana_ha_pacemaker_node1_ip: 10.15.120.51
+sap_hana_ha_pacemaker_node2_ip: 10.15.120.52
+
+sap_s4hana_deployment_sid: "PS4"
+sap_s4hana_deployment_db_host: "sapdphdb1.demo.josh.lab.msp.redhat.com"
+sap_s4hana_deployment_db_sid: "PS4"
+
+hana_vip:
+  ip: 10.15.120.53
+  a_record: sapdphdb.demo.josh.lab.msp.redhat.com
+  zone: demo.josh.lab.msp.redhat.com
+  reverse_zone: 120.15.10.in-addr.arpa.

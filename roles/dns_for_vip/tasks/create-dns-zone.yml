@@ -1,0 +1,7 @@
+---
+
+- name: dns zone
+  freeipa.ansible_freeipa.ipadnszone:
+    ipaadmin_password: "{{ dns.password }}"
+    name: "{{ hana_vip.zone }}"
+  delegate_to: "{{ dns.server }}"

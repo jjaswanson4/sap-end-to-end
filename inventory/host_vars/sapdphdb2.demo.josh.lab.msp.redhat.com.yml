@@ -1,0 +1,7 @@
+---
+
+ansible_host: 10.15.120.52
+ip: 10.15.120.52
+
+sap_hana_hsr_role: "secondary"
+sap_hana_hsr_alias: "msp-lab-secondary"

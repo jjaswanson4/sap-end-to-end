@@ -1,0 +1,6 @@
+---
+
+- name: register the insights client
+  shell: insights-client --register
+  listen:
+    - register insights

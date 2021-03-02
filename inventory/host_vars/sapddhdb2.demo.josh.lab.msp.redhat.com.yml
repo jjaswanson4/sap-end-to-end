@@ -1,0 +1,7 @@
+---
+
+ansible_host: 10.15.120.32
+ip: 10.15.120.32
+
+sap_hana_hsr_role: "secondary"
+sap_hana_hsr_alias: "DC2"

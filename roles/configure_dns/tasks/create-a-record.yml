@@ -1,0 +1,10 @@
+---
+
+- name: create A record
+  freeipa.ansible_freeipa.ipadnsrecord:
+    name: "{{ inventory_hostname.split('.')[0] }}"
+    record_type: A
+    record_value: "{{ ip }}"
+    zone_name: "{{ dns.zone }}"
+    ipaadmin_password: "{{ dns.password }}"
+  delegate_to: "{{ dns.server }}"

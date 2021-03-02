@@ -1,0 +1,20 @@
+---
+
+- name: push config files
+  template:
+    src: "{{ config_file.src }}"
+    dest: "{{ config_file.dest }}"
+    owner: "{{ config_file.owner }}"
+    group: "{{ config_file.group }}"
+    mode: "{{ config_file.mode }}"
+  when:
+    - config_files is defined
+    - config_file.name in config_files
+  loop_control:
+    loop_var: config_file
+  loop: "{{ available_config_files }}"
+
+- name: restart NetworkManager
+  service:
+    name: NetworkManager
+    state: restarted

@@ -1,0 +1,12 @@
+---
+
+- name: add disks to virtual machine
+  community.vmware.vmware_guest_disk:
+    hostname: "{{ vcenter.url }}"
+    username: "{{ vcenter.username }}"
+    password: "{{ vcenter.password }}"
+    validate_certs: "{{ vcenter.validate_certs }}"
+    datacenter: "{{ vcenter.datacenter }}"  
+    name: "{{ inventory_hostname }}"
+    disk: "{{ additional_storage }}"
+  delegate_to: localhost

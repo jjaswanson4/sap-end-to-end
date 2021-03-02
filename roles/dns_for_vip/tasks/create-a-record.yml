@@ -1,0 +1,10 @@
+---
+
+- name: create A record
+  freeipa.ansible_freeipa.ipadnsrecord:
+    name: "{{ hana_vip.a_record.split('.')[0] }}"
+    record_type: A
+    record_value: "{{ hana_vip.ip }}"
+    zone_name: "{{ hana_vip.zone }}"
+    ipaadmin_password: "{{ dns.password }}"
+  delegate_to: "{{ dns.server }}"

@@ -1,0 +1,43 @@
+---
+
+ansible_user: root
+ansible_password: 'R3dh4t123!'
+host_key_checking: false
+provisioning:
+  satellite:
+    username: admin
+    password: 'R3dh4t123!'
+    url: "https://satellite.demo.josh.lab.msp.redhat.com"
+    validate_certs: no
+  hostgroup: "{{ provisioning_hostgroup | default('image-rhel8-vlan146') }}"
+  cpus: "{{ cpus | default('2') }}"
+  memory_mb: "{{ memory_mb | default('4096') }}"
+  method: "{{ provisioning_method | default('image') }}"
+  organization: "{{ provisioning_organization | default('josh-demo') }}"
+  location: "{{ provisioning_location | default('josh-demo') }}"
+  image: "{{ provisioning_image | default('general-rhel8') }}"
+  compute_resource: "{{ provisioning_compute_resource | default('vcenter01.lab.msp.redhat.com') }}"
+timesync_ntp_servers:
+  - hostname: 0.rhel.pool.ntp.org
+    iburst: yes
+  - hostname: 1.rhel.pool.ntp.org
+    iburst: yes
+  - hostname: 2.rhel.pool.ntp.org
+    iburst: yes
+  - hostname: 3.rhel.pool.ntp.org
+    iburst: yes
+config_files:
+  - hosts
+  - NetworkManager.conf
+  - resolv.conf
+dns:
+  zone: demo.josh.lab.msp.redhat.com
+  reverse_zone: 120.15.10.in-addr.arpa.
+  server: idm-master.demo.josh.lab.msp.redhat.com
+  password: 'R3dh4t123!'
+vcenter:
+  username: 'ansible@vsphere.local'
+  password: 'R3dh4t123!'
+  url: "vcenter01.lab.msp.redhat.com"
+  validate_certs: no
+  datacenter: msp-lab

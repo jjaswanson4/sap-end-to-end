@@ -1,0 +1,6 @@
+---
+
+- name: set selinux to permissive | live
+  shell: setenforce permissive
+  listen:
+    - setenforce_permissive

@@ -1,0 +1,6 @@
+---
+
+- name: expand os vg
+  lvg:
+    vg: os
+    pvs: /dev/sda2,/dev/sdb

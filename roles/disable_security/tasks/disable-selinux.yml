@@ -1,0 +1,10 @@
+---
+
+- name: set selinux to permissive
+  copy:
+    src: files/selinux.config
+    dest: /etc/selinux/config
+    owner: root
+    group: root
+    mode: '0644'
+  notify: setenforce_permissive

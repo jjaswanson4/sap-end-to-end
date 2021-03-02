@@ -1,0 +1,67 @@
+---
+
+- name: build RHEL systems for SAP
+  hosts:
+    - sap
+  gather_facts: false
+  pre_tasks:
+    - name: print out host info
+      debug:
+        msg: "{{ hostvars[inventory_hostname] }}"
+  roles:
+    - configure_dns
+    - provision_virtual_machines
+    - config_files
+    - disable_security
+    - base_packages
+    - fedora.linux_system_roles.timesync
+  tasks:
+    - name: josh special - install htop because top sucks
+      yum:
+        name: https://dl.fedoraproject.org/pub/epel/8/Everything/x86_64/Packages/h/htop-3.0.5-1.el8.x86_64.rpm
+        state: present
+        disable_gpg_check: yes
+
+- name: prep SAP systems
+  hosts:
+    - sap
+  roles:
+    - add_storage
+    - mount_sap_nfs
+  tasks:
+    - name: include rhsm role, override become
+      include_role:
+        name: redhat_sap.sap_rhsm
+      vars:
+        ansible_become: false
+
+    - name: run the rest of the roles
+      include_role:
+        name: "{{ role }}"
+      loop_control:
+        loop_var: role
+      loop:
+        - linux-system-roles.storage
+        - redhat_sap.sap_hostagent
+        - sap-preconfigure
+
+- name: setup HANA and HSR
+  hosts:
+    - hana
+  pre_tasks:
+    - name: setup HANA vip
+      include_role:
+        name: dns_for_vip
+      run_once: true
+  roles:
+    - sap-hana-preconfigure
+    - redhat_sap.sap_hana_deployment
+    - redhat_sap.sap_hana_hsr
+    - redhat_sap.sap_hana_ha_pacemaker
+
+- name: setup s4 application servers
+  hosts:
+    - app_servers
+  roles:
+    - sap-netweaver-preconfigure
+    - redhat_sap.sap_s4hana_deployment

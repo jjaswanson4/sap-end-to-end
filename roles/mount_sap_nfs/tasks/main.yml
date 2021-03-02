@@ -1,0 +1,14 @@
+---
+
+- name: install nfs uilts
+  yum:
+    name: nfs-utils
+    state: present
+
+
+- name: mount sap software share
+  mount:
+    path: /software
+    src: 10.15.108.14:/mnt/data01/sap
+    fstype: nfs
+    state: mounted

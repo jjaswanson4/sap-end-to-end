@@ -1,0 +1,4 @@
+---
+
+- import_tasks: disable-firewalld.yml
+- import_tasks: disable-selinux.yml

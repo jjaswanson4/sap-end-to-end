@@ -1,0 +1,13 @@
+---
+
+- name: add-virtual-disk.yml
+  include_tasks:
+    file: add-virtual-disk.yml
+  when:
+    - additional_storage is defined
+
+#- name: modify LVM
+#  include_tasks:
+#    file: modify-lvm.yml
+#  when:
+#    - additional_storage is defined

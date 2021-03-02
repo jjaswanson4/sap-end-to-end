@@ -1,0 +1,26 @@
+---
+
+sap_hana_deployment_hana_sid: "QS4"
+sap_hana_hsr_hana_sid: "QS4"
+sap_hana_hsr_hana_primary_hostname: "sapdqhdb1"
+sap_hana_hsr_full_primary_hostname: "sapdqhdb1.demo.josh.lab.msp.redhat.com"
+sap_hana_hsr_full_secondary_hostname: "sapdqhdb1.demo.josh.lab.msp.redhat.com"
+
+sap_hana_ha_pacemaker_hana_sid: "QS4"
+sap_hana_ha_pacemaker_hana_instance_number: "00"
+sap_hana_ha_pacemaker_vip: 10.15.120.43
+sap_hana_ha_pacemaker_hacluster_password: "R3dh4t123!"
+sap_hana_ha_pacemaker_node1_fqdn: sapdqhdb1.demo.josh.lab.msp.redhat.com
+sap_hana_ha_pacemaker_node2_fqdn: sapdqhdb2.demo.josh.lab.msp.redhat.com
+sap_hana_ha_pacemaker_node1_ip: 10.15.120.41
+sap_hana_ha_pacemaker_node2_ip: 10.15.120.42
+
+sap_s4hana_deployment_sid: "QS4"
+sap_s4hana_deployment_db_host: "sapdqhdb.demo.josh.lab.msp.redhat.com"
+sap_s4hana_deployment_db_sid: "QS4"
+
+hana_vip:
+  ip: 10.15.120.43
+  a_record: sapdqhdb.demo.josh.lab.msp.redhat.com
+  zone: demo.josh.lab.msp.redhat.com
+  reverse_zone: 120.15.10.in-addr.arpa.

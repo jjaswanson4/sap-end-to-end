@@ -1,0 +1,7 @@
+---
+
+- name: insert line for satellite
+  lineinfile:
+    path: /etc/hosts
+    line: '10.15.108.103 satellite.demo.lab.msp.redhat.com satellite'
+    insertafter: EOF

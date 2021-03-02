@@ -1,0 +1,10 @@
+---
+
+- name: create PTR record
+  freeipa.ansible_freeipa.ipadnsrecord:
+    name: "{{ hana_vip.ip.split('.')[-1] }}"
+    record_type: PTR
+    record_value: "{{ hana_vip.a_record.split('.')[0] }}."
+    zone_name: "{{ hana_vip.reverse_zone }}"
+    ipaadmin_password: "{{ dns.password }}"
+  delegate_to: "{{ dns.server }}" 

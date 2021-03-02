@@ -1,0 +1,5 @@
+---
+
+- import_tasks: create-dns-zone.yml
+- import_tasks: create-a-record.yml
+- import_tasks: create-ptr-record.yml

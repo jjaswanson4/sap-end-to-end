@@ -1,0 +1,6 @@
+---
+
+collections:
+  - name: https://github.com/jjaswanson4/satellite_day_2/blob/main/jjaswanson4-satellite_day_2-2.0.0.tar.gz?raw=true
+  - name: redhatinsights.insights
+    source: https://galaxy.ansible.com

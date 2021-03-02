@@ -1,0 +1,10 @@
+---
+
+- name: install some base packages
+  yum:
+    name:
+      - insights-client
+      - vim
+      - lsof
+    state: present
+#  notify: register insights
